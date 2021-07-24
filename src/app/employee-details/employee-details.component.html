@@ -1,0 +1,74 @@
+<div class="row col-12 mt-4">
+  <div class="row">
+    <input class="col-4" #myInput type="search" placeholder="Search By Name" (input)="filterItem(myInput.value)">
+
+  </div>
+
+  <div class="row mt-4">
+    <button class="btn btn-danger col-4" (click)="remove()">
+      Remove Development Department
+    </button>
+  </div>
+
+  <div class="row mt-4">
+
+    <button class="btn btn-primary col-4" (click)="getDistinctDepartment()">
+      Get Distinct Department
+    </button>
+    <div class="row col-12">
+      <table class="table">
+        <tbody>
+          <tr *ngFor="let value of values; let i = index" class="col-12">
+            <span *ngIf="i === 0" class="mt-4">
+              <td class="col-3" *ngFor="let key of keys; let j = index">
+                <b>{{key}} :</b> {{value}}
+              </td>
+            </span>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+
+  <div class="row mt-4">
+
+    <button class="btn btn-primary col-4" (click)="expMoreThanTwoYears()">
+      Experience more than 2 years
+    </button>
+    <div class="row col-12">
+
+    </div>
+  </div>
+
+  <div class="row mt-4">
+    <table class="table">
+      <thead>
+        <tr class="col-12">
+          <th class="col-3">Id</th>
+          <th class="col-3"><a (click)="sortOn('name')">Name</a></th>
+          <th class="col-3">Department</th>
+          <th class="col-3"><a (click)="sortOn('joining_date')">Joining Date</a></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let element of filteredItems; index as i" class="col-12">
+          <td class="col-3">
+            {{element.id}}
+          </td>
+          <td class="col-3">
+            {{element.name}}
+          </td>
+          <td class="col-3">
+            {{element.department}}
+          </td>
+          <td class="col-3">
+            {{element.joining_date}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+</div>
